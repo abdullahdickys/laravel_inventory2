@@ -1,0 +1,7 @@
+jika nama tabel diganti maka tidak bisa di rollback migration`
+
+error:
+Undefined variable: title (View: /home/dr4g0na/Desktop/project/laravel_coba/resources/views/suppliers/create.blade.php)
+
+solution:
+delete $title
