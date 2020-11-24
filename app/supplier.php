@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class supplier extends Model
 {
-				protected $table = 'supplier';
-				protected $guarded = [];
+	protected $table = 'supplier';
+	// protected $primaryKey = 'id key';
+	protected $guarded = [];
 }

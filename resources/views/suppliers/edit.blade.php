@@ -22,20 +22,21 @@
             </div>
             <div class="box-body">
                
-				<form role="form" method="post" action="{{ route('suppliers.store') }}">
-         @csrf
+				<form role="form" method="post" action="{{ route('suppliers.update', $suppliers->id) }}">
+          @csrf
+            @method('PUT')
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Supplier</label>
-                  <input type="text" name="nama" class="form-control" id="exampleInputEmail1" placeholder="Nama Supplier">
+                  <input type="text" name="nama" value="{{ $suppliers['nama'] }}" class="form-control" id="exampleInputEmail1" placeholder="Nama Supplier">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">No Telp</label>
-                  <input type="number" name="no_telp" class="form-control" id="exampleInputPassword1" placeholder="No Telp">
+                  <input type="number" name="no_telp" value="{{ $suppliers['no_telp'] }}" class="form-control" id="exampleInputPassword1" placeholder="No Telp">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">Alamat</label>
-                  <textarea name="alamat" class="form-control" rows="5"></textarea>
+                  <textarea type="text" name="alamat" class="form-control" rows="5" placeholder="Alamat">{{ $suppliers['alamat'] }}</textarea>
                 </div>
               </div>
               <!-- /.box-body -->

@@ -1,16 +1,15 @@
-@extends('layouts.master')
  
-@section('content')
+<?php $__env->startSection('content'); ?>
  
-@if ($errors->any())
+<?php if($errors->any()): ?>
   <div class="alert alert-danger pb-0">
     <ul>
-      @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-      @endforeach
+      <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($error); ?></li>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </ul>
   </div>
-@endif
+<?php endif; ?>
 <br>
 <div class="row">
     <div class="col-md-12">
@@ -22,8 +21,8 @@
             </div>
             <div class="box-body">
                
-				<form role="form" method="post" action="{{ route('suppliers.store') }}">
-         @csrf
+				<form role="form" method="post" action="<?php echo e(route('suppliers.store')); ?>">
+         <?php echo csrf_field(); ?>
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Supplier</label>
@@ -49,9 +48,9 @@
     </div>
 </div>
  
-@endsection
+<?php $__env->stopSection(); ?>
  
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
  
 <script type="text/javascript">
     $(document).ready(function(){
@@ -66,5 +65,7 @@
     })
 </script>
  
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dr4g0na/Desktop/project/laravel_inventory2/resources/views/suppliers/create.blade.php ENDPATH**/ ?>

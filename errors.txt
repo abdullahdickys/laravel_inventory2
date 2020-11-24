@@ -5,3 +5,8 @@ Undefined variable: title (View: /home/dr4g0na/Desktop/project/laravel_coba/reso
 
 solution:
 delete $title
+
+error:
+syntax error, unexpected 'field' (T_STRING), expecting ')' (View: /home/dr4g0na/Desktop/project/laravel_inventory2/resources/views/suppliers/create.blade.php)
+
+solutions:

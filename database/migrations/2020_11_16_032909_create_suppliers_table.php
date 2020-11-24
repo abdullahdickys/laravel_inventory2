@@ -14,11 +14,11 @@ class CreateSuppliersTable extends Migration
     public function up()
     {
         Schema::create('supplier', function (Blueprint $table) {
-								$table->bigIncrements('id');
-								$table->string('nama', 255);
-								$table->text('alamat');  
-								$table->string('no_telp', 20);  
-								$table->timestamps();
+			$table->bigIncrements('id');
+			$table->string('nama', 255);
+			$table->text('alamat');  
+			$table->string('no_telp', 20);  
+			$table->timestamps();
         });
     }
 

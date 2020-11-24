@@ -40,29 +40,24 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        /* $this->validate($request, [ */
-        /* 		'nama' => 'required'; */
-        /* 		'no_telp' => 'required'; */
-        /* 		'alamat' => 'required'; */
-        /* ]); */
+        $this->validate($request, [
+        		'nama' => 'required'],
+        		['no_telp' => 'required'],
+        		['alamat' => 'required'
+        ]);
 
-        /* $a['nama'] = $request->nama; */
-        /* $a['nama'] = $request->no_telp; */
-        /* $a['nama'] = $request->alamat; */
-        /* $a['nama'] = date->() */
-        /* $a['nama'] = $request->nama; */
+        $suppliers = new supplier;
+        $suppliers->nama = $request['nama'];
+        $suppliers->no_telp = $request['no_telp'];
+        $suppliers->alamat = $request['alamat'];
+        $suppliers->save();
+
+        return redirect()
+            ->route('suppliers.index')
+            ->with('success','Data create Succesfull');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\supplier  $supplier
-     * @return \Illuminate\Http\Response
-     */
-    public function show(supplier $supplier)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -70,9 +65,11 @@ class SupplierController extends Controller
      * @param  \App\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function edit(supplier $supplier)
+    // public function edit(supplier $supplier)
+    public function edit($id)
     {
-        //
+        $suppliers = supplier::find($id);
+        return view('suppliers.edit',['suppliers'=>$suppliers]);
     }
 
     /**
@@ -82,9 +79,23 @@ class SupplierController extends Controller
      * @param  \App\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, supplier $supplier)
+    public function update(Request $request, supplier $id)
     {
-        //
+        $this->validate($request, [
+                'nama' => 'required'],
+                ['no_telp' => 'required'],
+                ['alamat' => 'required'
+        ]);
+
+        $suppliers = new supplier;
+        $suppliers->nama = $request['nama'];
+        $suppliers->no_telp = $request['no_telp'];
+        $suppliers->alamat = $request['alamat'];
+        $suppliers->save();
+
+        return redirect()
+            ->route('suppliers.index')
+            ->with('success','Data create Succesfull');   
     }
 
     /**
@@ -93,8 +104,13 @@ class SupplierController extends Controller
      * @param  \App\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(supplier $supplier)
+    public function destroy($id)
     {
-        //
+        $suppliers = supplier::find($id);
+        $suppliers->delete();
+
+        return redirect()
+            ->route('suppliers.index')
+            ->with('success','Data create Succesfull');   
     }
 }
