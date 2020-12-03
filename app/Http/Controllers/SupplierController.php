@@ -17,7 +17,11 @@ class SupplierController extends Controller
             // $title = 'Master supplier';
             $suppliers = \App\supplier::all();
             /* dd($suppliers->all()); */
-            return view('suppliers.index',compact('suppliers'));	 
+            return view('suppliers.index',compact('suppliers'));	
+
+            // $suppliers = supplier::latest()->paginate(5);
+            // return view('suppliers.index', compact('suppliers'))
+            // ->with('i', (request()->input('page', 1) - 1) * 5); 
     }
 
     /**
@@ -41,20 +45,20 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        		'nama' => 'required'],
+        		'nama_supplier' => 'required'],
         		['no_telp' => 'required'],
         		['alamat' => 'required'
         ]);
 
         $suppliers = new supplier;
-        $suppliers->nama = $request['nama'];
+        $suppliers->nama_supplier = $request['nama_supplier'];
         $suppliers->no_telp = $request['no_telp'];
         $suppliers->alamat = $request['alamat'];
         $suppliers->save();
 
         return redirect()
             ->route('suppliers.index')
-            ->with('success','Data create Succesfull');
+            ->with('success','Data create Succesful');
     }
 
    
@@ -79,19 +83,19 @@ class SupplierController extends Controller
      * @param  \App\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, supplier $id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
-                'nama' => 'required'],
+                'nama_supplier' => 'required'],
                 ['no_telp' => 'required'],
                 ['alamat' => 'required'
         ]);
 
-        $suppliers = new supplier;
-        $suppliers->nama = $request['nama'];
+        $suppliers = supplier::find($id);
+        $suppliers->nama_supplier = $request['nama_supplier'];
         $suppliers->no_telp = $request['no_telp'];
         $suppliers->alamat = $request['alamat'];
-        $suppliers->save();
+        $suppliers->update();
 
         return redirect()
             ->route('suppliers.index')

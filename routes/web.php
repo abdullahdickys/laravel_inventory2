@@ -22,6 +22,8 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>'auth'], function(){
    Route::resource('suppliers', 'SupplierController');
+   Route::resource('products', 'ProductController');
+   // Route::post('products', 'ProductController@store');
 });
 
 Auth::routes();

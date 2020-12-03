@@ -1,10 +1,11 @@
+@extends('layouts.master')
  
-<?php $__env->startSection('content'); ?>
-<?php if($message = Session::get('success')): ?>
+@section('content')
+@if ($message = Session::get('success'))
   <div class="alert alert-success mt-3 pb-0">
-    <p><?php echo e($message); ?></p>
+    <p>{{ $message }}</p>
   </div>
-<?php endif; ?>
+@endif
 <br>
 
 <div class="container-fluid mt--6">
@@ -14,7 +15,7 @@
             <!-- Card header -->
             <div class="card-header border-0">
               <h3 class="mb-0">Data</h3>
-			      <a class="btn btn-primary" href="<?php echo e(route('suppliers.create')); ?>" >add Data</a>
+			      <a class="btn btn-primary" href="{{ route('products.create') }}" >add Data</a>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
@@ -22,34 +23,40 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col" class="sort" data-sort="name">#</th>
-                    <th scope="col" class="sort" data-sort="budget">Nama</th>
-                    <th scope="col" class="sort" data-sort="status">No Telp</th>
-                    <th scope="col">Alamat</th>
+                    <th scope="col" class="sort" data-sort="budget">Supplier</th>
+                    <th scope="col" class="sort" data-sort="status">Nama</th>
+                    <th scope="col">Kode</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Minimal stock</th>
+                    <th scope="col">Harga</th>
                     <th scope="col">actions</th>
                   </tr>
                 </thead>
                 <tbody class="list">
-        				<?php $__currentLoopData = $suppliers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e=>$dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        				@foreach($product as $e=>$dt)
         					<tr>
-        						<td><?php echo e($e+1); ?></td>
-        						<td><?php echo e($dt->nama_supplier); ?></td>
-        						<td><?php echo e($dt->no_telp); ?></td>
-        						<td><?php echo e($dt->alamat); ?></td>
+        						<td>{{ $e+1 }}</td>
+        						<td>{{ $dt->supplier->nama_supplier }}</td>
+                    <td>{{ $dt->nama_product }}</td>
+        						<td>{{ $dt->kode }}</td>
+        						<td>{{ $dt->stock }}</td>
+                    <td>{{ $dt->minimal_stock }}</td>
+                    <td>{{ $dt->harga }}</td>
         						<td>
-                      <form action="<?php echo e(route('suppliers.destroy',$dt->id)); ?>" method="POST">
+                      <form action="{{ route('products.destroy',$dt->id) }}" method="POST">
    
-<!--                           <a class="btn btn-info" href="<?php echo e(route('suppliers.show',$dt->id)); ?>">Show</a>
+<!--                           <a class="btn btn-info" href="{{ route('products.show',$dt->id) }}">Show</a>
  -->          
-                          <a class="btn btn-primary" href="<?php echo e(route('suppliers.edit',$dt->id)); ?>">Edit</a>
+                          <a class="btn btn-primary" href="{{ route('products.edit',$dt->id) }}">Edit</a>
          
-                          <?php echo csrf_field(); ?>
-                          <?php echo method_field('DELETE'); ?>
+                          @csrf
+                          @method('DELETE')
             
                           <button type="submit" class="btn btn-danger">Delete</button>
                       </form>
                     </td>
         					</tr>               						
-        				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        				@endforeach
                 </tbody>
               </table>
             </div>
@@ -89,8 +96,8 @@
     </div>
 
 
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('scripts'); ?>
+@endsection
+@section('scripts')
  
 <script type="text/javascript">
     $(document).ready(function(){
@@ -105,6 +112,4 @@
     })
 </script>
  
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dr4g0na/Desktop/project/laravel_inventory2/resources/views/suppliers/index.blade.php ENDPATH**/ ?>
+@endsection

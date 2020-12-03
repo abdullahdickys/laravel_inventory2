@@ -33,14 +33,14 @@
         				@foreach($suppliers as $e=>$dt)
         					<tr>
         						<td>{{ $e+1 }}</td>
-        						<td>{{ $dt->nama }}</td>
+        						<td>{{ $dt->nama_supplier }}</td>
         						<td>{{ $dt->no_telp }}</td>
         						<td>{{ $dt->alamat }}</td>
         						<td>
                       <form action="{{ route('suppliers.destroy',$dt->id) }}" method="POST">
    
-                          <a class="btn btn-info" href="{{ route('suppliers.show',$dt->id) }}">Show</a>
-          
+<!--                           <a class="btn btn-info" href="{{ route('suppliers.show',$dt->id) }}">Show</a>
+ -->          
                           <a class="btn btn-primary" href="{{ route('suppliers.edit',$dt->id) }}">Edit</a>
          
                           @csrf
@@ -55,7 +55,7 @@
               </table>
             </div>
             <!-- Card footer -->
-            <div class="card-footer py-4">
+            <!-- <div class="card-footer py-4">
               <nav aria-label="...">
                 <ul class="pagination justify-content-end mb-0">
                   <li class="page-item disabled">
@@ -79,7 +79,7 @@
                   </li>
                 </ul>
               </nav>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

@@ -21,20 +21,21 @@
             </div>
             <div class="box-body">
                
-				<form role="form" method="post" action="<?php echo e(route('suppliers.store')); ?>">
-         <?php echo csrf_field(); ?>
+				<form role="form" method="post" action="<?php echo e(route('products.update', $products->id)); ?>">
+          <?php echo csrf_field(); ?>
+            <?php echo method_field('PUT'); ?>
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Supplier</label>
-                  <input type="text" name="nama_supplier" class="form-control" id="exampleInputEmail1" placeholder="Nama Supplier">
+                  <input type="text" name="nama" value="<?php echo e($products['nama']); ?>" class="form-control" id="exampleInputEmail1" placeholder="Nama Supplier">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">No Telp</label>
-                  <input type="number" name="no_telp" class="form-control" id="exampleInputPassword1" placeholder="No Telp">
+                  <input type="number" name="no_telp" value="<?php echo e($products['no_telp']); ?>" class="form-control" id="exampleInputPassword1" placeholder="No Telp">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">Alamat</label>
-                  <textarea name="alamat" class="form-control" rows="5"></textarea>
+                  <textarea type="text" name="alamat" class="form-control" rows="5" placeholder="Alamat"><?php echo e($products['alamat']); ?></textarea>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -68,4 +69,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dr4g0na/Desktop/project/laravel_inventory2/resources/views/suppliers/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/dr4g0na/Desktop/project/laravel_inventory2/resources/views/products/edit.blade.php ENDPATH**/ ?>
