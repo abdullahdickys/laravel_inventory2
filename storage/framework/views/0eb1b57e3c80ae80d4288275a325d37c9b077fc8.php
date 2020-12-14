@@ -13,7 +13,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Data</h3>
+              <h2 class="mb-0">Suppliers Data</h2>
 			      <a class="btn btn-primary" href="<?php echo e(route('suppliers.create')); ?>" >add Data</a>
             </div>
             <!-- Light table -->

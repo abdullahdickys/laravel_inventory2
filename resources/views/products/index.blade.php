@@ -14,7 +14,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Data</h3>
+              <h2 class="mb-0">Products Data</h2>
 			      <a class="btn btn-primary" href="{{ route('products.create') }}" >add Data</a>
             </div>
             <!-- Light table -->
@@ -24,7 +24,7 @@
                   <tr>
                     <th scope="col" class="sort" data-sort="name">#</th>
                     <th scope="col" class="sort" data-sort="budget">Supplier</th>
-                    <th scope="col" class="sort" data-sort="status">Nama</th>
+                    <th scope="col" class="sort" data-sort="status">Product</th>
                     <th scope="col">Kode</th>
                     <th scope="col">Stock</th>
                     <th scope="col">Minimal stock</th>
@@ -45,8 +45,8 @@
         						<td>
                       <form action="{{ route('products.destroy',$dt->id) }}" method="POST">
    
-<!--                           <a class="btn btn-info" href="{{ route('products.show',$dt->id) }}">Show</a>
- -->          
+                          <a class="btn btn-info" href="{{ route('products.detail',$dt->id) }}">Detail</a>
+
                           <a class="btn btn-primary" href="{{ route('products.edit',$dt->id) }}">Edit</a>
          
                           @csrf

@@ -16,7 +16,7 @@ class SupplierController extends Controller
     {
             // $title = 'Master supplier';
             $suppliers = \App\supplier::all();
-            /* dd($suppliers->all()); */
+             // dd($suppliers->all()); 
             return view('suppliers.index',compact('suppliers'));	
 
             // $suppliers = supplier::latest()->paginate(5);
@@ -99,7 +99,7 @@ class SupplierController extends Controller
 
         return redirect()
             ->route('suppliers.index')
-            ->with('success','Data create Succesfull');   
+            ->with('success','Data update Succesfull');   
     }
 
     /**
@@ -115,6 +115,6 @@ class SupplierController extends Controller
 
         return redirect()
             ->route('suppliers.index')
-            ->with('success','Data create Succesfull');   
+            ->with('success','Data delete Succesfull');   
     }
 }

@@ -25,6 +25,14 @@ class ProductController extends Controller
         return view('products.index',compact('product','datas'));
     }
 
+    public function detail($id)
+    {
+        /* $dt = \App\product::all(); */
+        $dt = \App\product::findOrFail($id);
+        //dd($dt->all());
+        return view('products.detail',compact('dt'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +66,6 @@ class ProductController extends Controller
 
         // $data = $request->all();
         // product::create($request->except('_token'));
-
         // \App\product::insert($data);
         // dd($data);
         $product = new product;
@@ -86,8 +93,9 @@ class ProductController extends Controller
     // public function edit(supplier $supplier)
     public function edit($id)
     {
-        $products = supplier::find($id);
-        return view('products.edit',['products'=>$products]);
+        $suppliers = supplier::get();
+        $dt = product::find($id);
+        return view('products.edit',compact('suppliers','dt'));
     }
 
     /**
@@ -99,21 +107,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-                'nama' => 'required'],
-                ['no_telp' => 'required'],
-                ['alamat' => 'required'
-        ]);
+        $this->validate($request,   [
+                'supplier_id' => 'required',
+                'nama_product' => 'required',
+                'kode' => 'required',
+                'stock' => 'required',
+                'minimal_stock' => 'required',
+                'harga' => 'required'
+            ]);
+        // $data = product::create($request->except('_token'));
+        // \App\product::where('id',$id)->update($data);
 
-        $products = supplier::find($id);
-        $products->nama = $request['nama'];
-        $products->no_telp = $request['no_telp'];
-        $products->alamat = $request['alamat'];
-        $products->update();
+
+        $product = product::find($id);
+        $product->supplier_id = $request['supplier_id'];
+        $product->nama_product = $request['nama_product'];
+        $product->kode = $request['kode'];
+        // $product->stock = $request['stock'];
+        $product->minimal_stock = $request['minimal_stock'];
+        $product->harga = $request['harga'];
+        $product->update();
 
         return redirect()
             ->route('products.index')
-            ->with('success','Data create Succesfull');   
+            ->with('success','Data edit Succesfull');   
     }
 
     /**
@@ -124,11 +141,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $products = supplier::find($id);
-        $products->delete();
+        // $products = supplier::find($id);
+        product::where('id',$id)->delete();
 
         return redirect()
             ->route('products.index')
-            ->with('success','Data create Succesfull');   
+            ->with('success','Data delete Succesfull');   
     }
 }

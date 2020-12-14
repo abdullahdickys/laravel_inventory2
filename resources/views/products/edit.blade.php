@@ -22,27 +22,43 @@
             </div>
             <div class="box-body">
                
-				<form role="form" method="post" action="{{ route('products.update', $products->id) }}">
-          @csrf
+        <form role="form" method="post" action="{{ route('products.update', $dt->id) }}">
+         @csrf
             @method('PUT')
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Supplier</label>
-                  <input type="text" name="nama" value="{{ $products['nama'] }}" class="form-control" id="exampleInputEmail1" placeholder="Nama Supplier">
+                  <select class="form-control select2" name="supplier_id">
+                    @foreach($suppliers as $sp)
+                      <option value="{{ $sp->id }}" {{ ($dt->nama_supplier == $sp->id) ? 'selected' : '' }}>{{ $sp->nama_supplier }}</option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">No Telp</label>
-                  <input type="number" name="no_telp" value="{{ $products['no_telp'] }}" class="form-control" id="exampleInputPassword1" placeholder="No Telp">
+                  <label for="exampleInputPassword1">nama product</label>
+                  <input type="text" name="nama_product" class="form-control" id="exampleInputPassword1" placeholder="nama product" value="{{ $dt->nama_product }}"> 
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputFile">Alamat</label>
-                  <textarea type="text" name="alamat" class="form-control" rows="5" placeholder="Alamat">{{ $products['alamat'] }}</textarea>
+                  <label for="exampleInputPassword1">kode</label>
+                  <input type="text" name="kode" class="form-control" value="{{ $dt->kode }}" id="exampleInputPassword1" placeholder="kode">
+                </div>
+               <!--  <div class="form-group">
+                  <label for="exampleInputPassword1">stock</label>
+                  <input type="number" name="stock" class="form-control" id="exampleInputPassword1" placeholder="stock product" value="{{ $dt->stock }}">
+                </div> -->
+                <div class="form-group">
+                  <label for="exampleInputPassword1">minimal stock</label>
+                  <input type="number" name="minimal_stock" class="form-control" id="exampleInputPassword1" placeholder="minimal stock" value="{{ $dt->minimal_stock }}">
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">harga</label>
+                  <input type="number" name="harga" class="form-control" id="exampleInputPassword1" placeholder="harga product" value="{{ $dt->harga }}">
                 </div>
               </div>
               <!-- /.box-body -->
  
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Update</button>
               </div>
             </form>
             </div>
@@ -68,4 +84,3 @@
 </script>
  
 @endsection
-
