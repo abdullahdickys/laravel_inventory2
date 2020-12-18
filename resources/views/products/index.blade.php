@@ -28,7 +28,8 @@
                     <th scope="col">Kode</th>
                     <th scope="col">Stock</th>
                     <th scope="col">Minimal stock</th>
-                    <th scope="col">Harga</th>
+                    <th scope="col">Harga Beli</th>
+                    <th scope="col">Harga Jual</th>
                     <th scope="col">actions</th>
                   </tr>
                 </thead>
@@ -41,6 +42,7 @@
         						<td>{{ $dt->kode }}</td>
         						<td>{{ $dt->stock }}</td>
                     <td>{{ $dt->minimal_stock }}</td>
+                    <td>{{ $dt->beli }}</td>
                     <td>{{ $dt->harga }}</td>
         						<td>
                       <form action="{{ route('products.destroy',$dt->id) }}" method="POST">

@@ -28,7 +28,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama Supplier</label>
-                  <input type="text" name="nama" value="{{ $suppliers['nama'] }}" class="form-control" id="exampleInputEmail1" placeholder="Nama Supplier">
+                  <input type="text" name="nama_supplier" value="{{ $suppliers['nama_supplier'] }}" class="form-control" id="exampleInputEmail1" placeholder="Nama Supplier">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">No Telp</label>
@@ -42,7 +42,7 @@
               <!-- /.box-body -->
  
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">update</button>
               </div>
             </form>
             </div>

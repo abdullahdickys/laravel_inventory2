@@ -50,9 +50,13 @@
                   <label for="exampleInputPassword1">minimal stock</label>
                   <input type="number" name="minimal_stock" class="form-control" id="exampleInputPassword1" placeholder="minimal stock" value="{{ $dt->minimal_stock }}">
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Harga Beli Product</label>
+                  <input type="number" name="beli" class="form-control" id="exampleInputPassword1" placeholder="harga beli" value="{{ $dt->beli }}">
+                </div>
                  <div class="form-group">
-                  <label for="exampleInputPassword1">harga</label>
-                  <input type="number" name="harga" class="form-control" id="exampleInputPassword1" placeholder="harga product" value="{{ $dt->harga }}">
+                  <label for="exampleInputPassword1">Harga Jual Product</label>
+                  <input type="number" name="harga" class="form-control" id="exampleInputPassword1" placeholder="harga jual" value="{{ $dt->harga }}">
                 </div>
               </div>
               <!-- /.box-body -->

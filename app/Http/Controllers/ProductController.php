@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function detail($id)
     {
         /* $dt = \App\product::all(); */
-        $dt = \App\product::findOrFail($id);
+        $dt = \App\product::find($id);
         //dd($dt->all());
         return view('products.detail',compact('dt'));
     }
@@ -61,6 +61,7 @@ class ProductController extends Controller
                 'kode' => 'required',
                 'stock' => 'required',
                 'minimal_stock' => 'required',
+                'beli' => 'required',
                 'harga' => 'required'
             ]);
 
@@ -74,6 +75,7 @@ class ProductController extends Controller
         $product->kode = $request['kode'];
         $product->stock = $request['stock'];
         $product->minimal_stock = $request['minimal_stock'];
+        $product->beli = $request['beli'];
         $product->harga = $request['harga'];
         $product->save();
 
@@ -111,8 +113,9 @@ class ProductController extends Controller
                 'supplier_id' => 'required',
                 'nama_product' => 'required',
                 'kode' => 'required',
-                'stock' => 'required',
+                /* 'stock' => 'required', */
                 'minimal_stock' => 'required',
+                'beli' => 'required',
                 'harga' => 'required'
             ]);
         // $data = product::create($request->except('_token'));
@@ -125,6 +128,7 @@ class ProductController extends Controller
         $product->kode = $request['kode'];
         // $product->stock = $request['stock'];
         $product->minimal_stock = $request['minimal_stock'];
+        $product->beli = $request['beli'];
         $product->harga = $request['harga'];
         $product->update();
 

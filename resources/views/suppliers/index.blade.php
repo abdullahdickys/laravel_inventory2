@@ -39,8 +39,7 @@
         						<td>
                       <form action="{{ route('suppliers.destroy',$dt->id) }}" method="POST">
    
-<!--                           <a class="btn btn-info" href="{{ route('suppliers.show',$dt->id) }}">Show</a>
- -->          
+<!--     <a class="btn btn-info" href="{{ route('suppliers.show',$dt->id) }}">Show</a>-->          
                           <a class="btn btn-primary" href="{{ route('suppliers.edit',$dt->id) }}">Edit</a>
          
                           @csrf
