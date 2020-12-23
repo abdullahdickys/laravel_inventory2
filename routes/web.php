@@ -25,6 +25,7 @@ Route::group(['middleware'=>'auth'], function(){
    Route::get('products/detail/{id}', 'ProductController@detail')->name('products.detail');
    Route::resource('suppliers', 'SupplierController');
    Route::resource('po', 'po_controller');
+   Route::get('po/products/{supplier}', 'po_controller@get_product')->name('po.products');
    // Route::resource('products', 'ProductController');
    // Route::post('products', 'ProductController@store');
 });

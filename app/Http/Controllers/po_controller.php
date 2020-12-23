@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\purchase_order;
+use App\supplier;
+use App\product;
+
 use Illuminate\Http\Request;
 
 class po_controller extends Controller
@@ -13,7 +15,15 @@ class po_controller extends Controller
      */
     public function index()
     {
-        //
+	     
+    }
+
+    public function get_product($id_supplier){
+    	$docmo = 'PO-'.rand();
+        $supplier = supplier::orderBy('nama_supplier','asc')->get();
+        $product = product::where('supplier',$id_supplier)->get();
+
+        return view('po.products'.compact('docmo','supplier','product'));
     }
 
     /**
@@ -23,7 +33,10 @@ class po_controller extends Controller
      */
     public function create()
     {
-        //
+	    $docmo = 'PO-'.rand();
+        $supplier = \App\supplier::orderBy('nama_supplier','asc')->get();
+
+        return view('po.create',compact('docmo','supplier'));
     }
 
     /**
