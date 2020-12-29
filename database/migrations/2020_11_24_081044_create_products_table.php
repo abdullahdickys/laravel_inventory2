@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('supplier_id');
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('restrict');
             
 
         });

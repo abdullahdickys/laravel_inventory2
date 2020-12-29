@@ -255,9 +255,14 @@ desired effect
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-<?php echo $__env->yieldContent('scripts'); ?>
 <!-- jQuery 3 -->
 <script src="<?php echo e(asset('assets/bower_components/jquery/dist/jquery.min.js')); ?> "></script>
+<?php echo $__env->yieldContent('scripts'); ?>
+
+
+
+
+
 <!-- Bootstrap 3.3.7 -->
 <script src="<?php echo e(asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js')); ?> "></script>
 <!-- AdminLTE App -->

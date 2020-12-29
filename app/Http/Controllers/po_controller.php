@@ -18,12 +18,13 @@ class po_controller extends Controller
 	     
     }
 
-    public function get_product($id_supplier){
+    public function get_product($id_supplier)
+    {
     	$docmo = 'PO-'.rand();
         $supplier = supplier::orderBy('nama_supplier','asc')->get();
-        $product = product::where('supplier',$id_supplier)->get();
+        $product = product::where('supplier_id',$id_supplier)->get();
 
-        return view('po.products'.compact('docmo','supplier','product'));
+        return view('po.create',compact('docmo','supplier','product'));
     }
 
     /**

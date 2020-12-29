@@ -10,3 +10,11 @@ error:
 syntax error, unexpected 'field' (T_STRING), expecting ')' (View: /home/dr4g0na/Desktop/project/laravel_inventory2/resources/views/suppliers/create.blade.php)
 
 solutions:
+
+error:
+ErrorException Array to string conversion
+
+solutions:
+before :   return view('po.create'.compact('docmo','supplier','product'));
+after  :   return view('po.create',compact('docmo','supplier','product'));
+

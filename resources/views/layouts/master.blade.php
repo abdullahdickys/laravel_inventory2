@@ -253,9 +253,14 @@ desired effect
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-@yield('scripts')
 <!-- jQuery 3 -->
 <script src="{{  asset('assets/bower_components/jquery/dist/jquery.min.js') }} "></script>
+@yield('scripts')
+{{-- <script async src="{{  asset('assets/jquery-3.5.1.min.js') }} "></script> --}}
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
+
+{{-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script> --}}
+
 <!-- Bootstrap 3.3.7 -->
 <script src="{{  asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }} "></script>
 <!-- AdminLTE App -->

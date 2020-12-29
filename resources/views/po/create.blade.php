@@ -69,22 +69,23 @@
  
 @section('scripts')
  
-<script type="text/javascript">
+<script language="JavaScript" type="text/javascript">
     $(document).ready(function(){
-        $("select[name='nama_supplier']").change(function(e)){
-          var id_supplier = $(this).val()
-          var url = "{{ url('po/product') }}"+'/'+id_supplier;
+      
+        $("select[name='nama_supplier']").change(function(e){
+          let id_supplier = $(this).val();
+          let url = "{{ url('po/products') }}"+'/'+id_supplier;
 
           window.location.href = url;
-        }
+        });
         // btn refresh
         $('.btn-refresh').click(function(e){
             e.preventDefault();
             $('.preloader').fadeIn();
             location.reload();
-        })
+        });
  
-    })
+    });
 </script>
  
 @endsection
