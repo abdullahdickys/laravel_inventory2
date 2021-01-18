@@ -42,17 +42,21 @@
                            <table class="table myTable">
                                <thead>
                                    <tr>
+                                       <th>Pilih Product</th>
                                        <th>#</th>
-                                       <th>Nama Supplier</th>
+                                       <th>Nama Product</th>
                                        <th>Harga Beli</th>
+                                       <th>Qty</th>
                                    </tr>
                                </thead>
                                <tbody>
                                 <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e=>$pd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                    <tr>
+                                       <td><input type="checkbox" name="is_po" value="<?php echo e($pd->id); ?>"></td>
                                        <td><?php echo e($e+1); ?></td>
-                                       <td><?php echo e($pd->nama_supplier); ?></td>
-                                       <td><?php echo e($pd->beli); ?></td>
+                                       <td><?php echo e($pd->nama_product); ?></td>
+                                       <td><?php echo e(number_format($pd->beli,0)); ?></td>
+                                       <td><input type="number" value="0" class="form-control" name="qty[]"></td>
                                    </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                </tbody>

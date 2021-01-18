@@ -43,17 +43,21 @@
                            <table class="table myTable">
                                <thead>
                                    <tr>
+                                       <th>Pilih Product</th>
                                        <th>#</th>
-                                       <th>Nama Supplier</th>
+                                       <th>Nama Product</th>
                                        <th>Harga Beli</th>
+                                       <th>Qty</th>
                                    </tr>
                                </thead>
                                <tbody>
                                 @foreach($product as $e=>$pd)
                                    <tr>
+                                       <td><input type="checkbox" name="is_po" value="{{ $pd->id }}"></td>
                                        <td>{{ $e+1 }}</td>
-                                       <td>{{ $pd->nama_supplier }}</td>
-                                       <td>{{ $pd->beli }}</td>
+                                       <td>{{ $pd->nama_product }}</td>
+                                       <td>{{ number_format($pd->beli,0) }}</td>
+                                       <td><input type="number" value="0" class="form-control" name="qty[]"></td>
                                    </tr>
                                 @endforeach
                                </tbody>

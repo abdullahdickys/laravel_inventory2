@@ -26,10 +26,15 @@ Route::group(['middleware'=>'auth'], function(){
    Route::resource('suppliers', 'SupplierController');
    Route::resource('po', 'po_controller');
    Route::get('po/products/{supplier}', 'po_controller@get_product')->name('po.products');
+   Route::get('po/products/{supplier}', 'po_controller@get_product')->name('po.products');
    // Route::resource('products', 'ProductController');
    // Route::post('products', 'ProductController@store');
 });
    	   
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
